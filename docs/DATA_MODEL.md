@@ -1,0 +1,11 @@
+# Data model and portability
+
+Archive schema version 1 contains application identity, export timestamp, sessions, projects, tasks, ideas and settings. UUIDs are stable. Dates use Foundation Codable's numeric reference-date encoding (seconds since 2001-01-01 UTC). CSV dates use ISO-8601 UTC and durations are seconds; displayed minutes are rounded down. JSON restores precise stored seconds. Optional archive provenance marks QA data as simulated. Merge rejects simulated archives into recorded storage; old version-1 archives remain compatible. Optional website rules/profiles decode as absent for older archives.
+
+FocusSession stores type, intention, optional project/task UUID, planned duration, start/end timestamps, explicit timing segments, revision, status, recovery provenance, reflection/rating and optional soft-deletion timestamp. Optional per-segment context, context-revision audit entries and self-reported interruptions preserve mid-session changes. Context-less old segments retain legacy fallback behavior. Optional cycle switches default off in older archives. Project and task references are checked against the imported graph. One active session is permitted. Settings contain cycle policy, presets, optional goal and explicit distraction/notification preferences.
+
+SQLite user_version and payload schema_version are 1. The snapshots table has one immutable key. Future migrations must reject newer unknown schemas, back up before destructive changes, migrate transactionally and preserve original exports. No automatic destructive migration exists.
+
+Imports are limited to 25 MB, 100,000 sessions/tasks, 10,000 projects/ideas and validated duration/rating bounds. Duplicate IDs in the incoming file are rejected. Before merge, counts and policy are shown. Existing IDs and settings win. New incoming active timers become interrupted history, preventing takeover of the local running timer. Conflicting existing-ID edits are not merged in this version; retain both original files for manual review.
+
+Exports contain personal intentions, project/task names, reflections and developer ideas. They are not encrypted. Share deliberately. CSV neutralizes formula-leading text. JSON is the restoration format; CSV and Markdown are reports.

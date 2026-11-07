@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" role="img" aria-label="Tempo: an open circle making room for focus">
+<defs><linearGradient id="accent" x2="0.8" y2="1"><stop stop-color="#858BFF"/><stop offset="1" stop-color="#6269F5"/></linearGradient></defs>
+<g id="background"><rect width="1024" height="1024" rx="220" fill="url(#accent)"/></g>
+<g id="track"><circle cx="512" cy="512" r="278" fill="none" stroke="#FFFFFF" stroke-opacity=".2" stroke-width="66"/></g>
+<g id="primary-symbol" fill="none" stroke="#FFFFFF" stroke-linecap="round"><path d="M512 234 A278 278 0 1 1 270 649" stroke-width="66"/><path d="M512 363 V512 L616 572" stroke-width="56"/></g>
+<g id="highlight"><circle cx="271" cy="374" r="33" fill="#FFFFFF"/></g>
+</svg>

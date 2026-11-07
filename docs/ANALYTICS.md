@@ -1,0 +1,5 @@
+# Analytics
+
+Daily bars use actual active segment elapsed seconds. Intervals are split at calendar boundaries using the supplied Calendar/timezone. Pauses, break session types and soft-deleted records are excluded. Abandoned work still contributes actual recorded focus; completed-session counts are separately labelled. Project/task totals derive from each active segment's frozen context, with session-level IDs used only for older context-less segments. Switching task mid-session does not reassign already recorded time. CSV includes segment context JSON alongside final session project metadata. No sample records or fabricated insights are included.
+
+The interface provides trailing week/month/year bars, all-time project totals and an optional daily-minute goal. It does not yet provide custom ranges, heatmaps, time-of-day distributions, histograms, weekly comparisons or advanced goal types. Segment placement uses the segment start wall timestamp plus measured duration, so a wall clock discontinuity can affect civil-time placement even though total measured seconds stay correct. Recovered elapsed time is estimated and labelled.

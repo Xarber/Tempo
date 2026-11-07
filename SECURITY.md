@@ -1,0 +1,3 @@
+# Security
+
+Do not publish personal productivity records with bug reports. Report vulnerabilities privately to the repository maintainer through an established private channel; there is no public security contact configured yet. Local history is plaintext SQLite under the user's Application Support directory with restricted filesystem permissions, not application-level encryption. FileVault is recommended. No remote service is connected. JSON import is bounded and validated, existing IDs win, and CSV formula prefixes are escaped. Browser enforcement, remote auth and synchronization are not implemented.

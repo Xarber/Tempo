@@ -1,0 +1,35 @@
+name: Validate macOS
+on:
+  workflow_dispatch:
+  push:
+    branches: [beta, main]
+permissions:
+  contents: read
+jobs:
+  browser-policy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate native host and browser rule policy
+        run: |
+          python3 -m unittest discover -s Tests/BrowserTests -p 'test_*.py'
+          node --test Tests/BrowserTests/policy.test.mjs
+          node --check extensions/chromium/background.js
+  macos:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test core and compile application
+        run: swift test
+      - name: Package development app
+        run: scripts/build-macos.sh release
+      - name: Archive
+        run: ditto -c -k --keepParent build/Tempo.app build/Tempo-macos.zip
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Tempo-0.1.0-macos-${{ github.sha }}
+          path: build/Tempo-macos.zip
+# No release publication is configured or authorized.
