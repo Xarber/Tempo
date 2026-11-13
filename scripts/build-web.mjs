@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0-only
-import { spawnSync } from 'node:child_process';
+import { execFileSync, spawnSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import {
     cpSync,
@@ -25,11 +25,27 @@ for (const file of ['INDEX.md', 'MACOS.md', 'PRIVACY.md', 'WEB.md']) {
     cpSync(join('docs', file), join('dist/docs', file));
 }
 cpSync('LICENSE', 'dist/LICENSE');
+const commit = execFileSync('git', ['rev-parse', 'HEAD'], {
+    encoding: 'utf8',
+}).trim();
+writeFileSync(
+    'dist/version.json',
+    JSON.stringify({
+        commit,
+        deployment:
+            process.env.EXPO_PUBLIC_TEMPO_DEPLOYMENT === 'xcenter'
+                ? 'xcenter'
+                : 'development',
+    }),
+);
 const outputFiles = readdirSync('dist', {
     recursive: true,
     withFileTypes: true,
 })
-    .filter((entry) => entry.isFile() && entry.name !== 'sw.js')
+    .filter(
+        (entry) =>
+            entry.isFile() && !['sw.js', 'version.json'].includes(entry.name),
+    )
     .map((entry) => join(entry.parentPath, entry.name).slice('dist'.length))
     .sort();
 const fingerprint = createHash('sha256');

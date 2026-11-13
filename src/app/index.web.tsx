@@ -218,7 +218,9 @@ export default function WebEntry() {
     useEffect(() => {
         function restore() {
             const query = new URLSearchParams(location.search);
-            const qaMode = query.get('qa') === '1';
+            const qaMode =
+                process.env.EXPO_PUBLIC_TEMPO_DEPLOYMENT !== 'xcenter' &&
+                query.get('qa') === '1';
             setQA(qaMode);
             let opened = false;
             try {

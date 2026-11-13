@@ -1,0 +1,101 @@
+name: Native mobile packages
+on:
+  workflow_dispatch:
+  push:
+    branches: [beta, main]
+permissions:
+  contents: read
+concurrency:
+  group: tempo-mobile-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  ios:
+    runs-on: macos-26
+    strategy:
+      fail-fast: false
+      matrix:
+        sdk: [iphoneos, iphonesimulator]
+    env:
+      SDK: ${{ matrix.sdk }}
+      EXPO_NO_TELEMETRY: 1
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: |
+          xcodebuild -version
+          npm ci
+          npx --no-install expo prebuild --platform ios --no-install
+          (cd ios && pod install)
+      - name: Compile and package
+        run: |
+          if [ "$SDK" = iphoneos ]; then
+            destination='generic/platform=iOS'
+          else
+            destination='generic/platform=iOS Simulator'
+          fi
+          xcodebuild -workspace ios/Tempo.xcworkspace -scheme Tempo -configuration Release \
+            -sdk "$SDK" -destination "$destination" -derivedDataPath build/ios CODE_SIGNING_ALLOWED=NO
+          app="build/ios/Build/Products/Release-$SDK/Tempo.app"
+          test -f "$app/main.jsbundle"
+          /usr/libexec/PlistBuddy -c 'Print CFBundleIdentifier' "$app/Info.plist" | grep -Fx org.openrecode.tempo
+          xcrun vtool -show-build "$app/Tempo"
+          mkdir -p artifacts
+          if [ "$SDK" = iphoneos ]; then
+            mkdir -p Payload
+            ditto "$app" Payload/Tempo.app
+            ditto -c -k --keepParent Payload artifacts/Tempo-ios-unsigned.ipa
+          else
+            ditto -c -k --sequesterRsrc --keepParent "$app" artifacts/Tempo-ios-simulator.app.zip
+          fi
+          (cd artifacts && shasum -a 256 Tempo-* > SHA256SUMS)
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Tempo-1.0.0-${{ matrix.sdk }}-${{ github.ref_name }}-${{ github.sha }}
+          path: artifacts/
+          if-no-files-found: error
+
+  android:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        package: [apk, aab]
+    env:
+      PACKAGE: ${{ matrix.package }}
+      EXPO_NO_TELEMETRY: 1
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - run: |
+          npm ci
+          npx --no-install expo prebuild --platform android --no-install
+      - name: Compile unsigned release package
+        run: |
+          # Expo's generated release template uses the debug key by default.
+          # Remove the release signing binding so CI never distributes a debug-signed release.
+          python3 scripts/android-unsigned.py android/app/build.gradle
+          mkdir -p artifacts
+          if [ "$PACKAGE" = apk ]; then
+            (cd android && ./gradlew assembleRelease -PreactNativeArchitectures=armeabi-v7a,arm64-v8a,x86,x86_64)
+            cp android/app/build/outputs/apk/release/app-release-unsigned.apk artifacts/Tempo-android-universal-unsigned.apk
+          else
+            (cd android && ./gradlew bundleRelease -PreactNativeArchitectures=armeabi-v7a,arm64-v8a,x86,x86_64)
+            cp android/app/build/outputs/bundle/release/app-release.aab artifacts/Tempo-android-unsigned.aab
+          fi
+          unzip -tq artifacts/Tempo-*
+          (cd artifacts && sha256sum Tempo-* > SHA256SUMS)
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Tempo-1.0.0-android-${{ matrix.package }}-${{ github.ref_name }}-${{ github.sha }}
+          path: artifacts/
+          if-no-files-found: error

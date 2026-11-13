@@ -61,7 +61,9 @@ export default function Workspace({
     const [taps, setTaps] = useState(0);
     const [reflection, setReflection] = useState<string | undefined>(undefined);
     const [imported, setImported] = useState<State | undefined>(undefined);
-    const developer = developerUntil > Date.now();
+    const developerTools =
+        process.env.EXPO_PUBLIC_TEMPO_DEPLOYMENT !== 'xcenter';
+    const developer = developerTools && developerUntil > Date.now();
     useEffect(() => {
         const route = new URLSearchParams(location.search).get('section');
         if (route === 'settings') setSection('Settings');
@@ -318,21 +320,23 @@ export default function Workspace({
                                         popup.
                                     </p>
                                 </details>
-                                <button
-                                    className="quiet"
-                                    onClick={() => {
-                                        const count = taps + 1;
-                                        setTaps(count);
-                                        if (count >= 3) {
-                                            setDeveloperUntil(
-                                                Date.now() + 30000,
-                                            );
-                                            setTaps(0);
-                                        }
-                                    }}
-                                >
-                                    Tempo 0.1.0 · version
-                                </button>
+                                {developerTools && (
+                                    <button
+                                        className="quiet"
+                                        onClick={() => {
+                                            const count = taps + 1;
+                                            setTaps(count);
+                                            if (count >= 3) {
+                                                setDeveloperUntil(
+                                                    Date.now() + 30000,
+                                                );
+                                                setTaps(0);
+                                            }
+                                        }}
+                                    >
+                                        Tempo 0.1.0 · version
+                                    </button>
+                                )}
                                 {developer && (
                                     <button
                                         onClick={() => setSection('Developer')}
@@ -344,7 +348,8 @@ export default function Workspace({
                         </div>
                     </>
                 )}
-                {section === 'Developer' &&
+                {developerTools &&
+                    section === 'Developer' &&
                     (developer ? (
                         <Ideas
                             store={store}
