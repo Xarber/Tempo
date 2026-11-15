@@ -1,0 +1,322 @@
+{
+  "uadsVersion": "baseline-sections-01-52",
+  "manifestVersion": 1,
+  "project": {
+    "name": "Tempo",
+    "repository": "Xarber/Tempo",
+    "profiles": [
+      "mobile-app",
+      "desktop-app",
+      "web-app"
+    ],
+    "frameworks": [
+      "SwiftUI",
+      "Expo SDK 57",
+      "React Native"
+    ],
+    "platforms": [
+      "macos",
+      "ios",
+      "android",
+      "web"
+    ],
+    "hosting": "X-Center"
+  },
+  "features": {
+    "pwa": "implemented",
+    "onboarding": "pending",
+    "screenshotRendering": "pending",
+    "sampleData": "partial",
+    "developerOptions": "partial",
+    "ideas": "partial",
+    "backend": "not-applicable"
+  },
+  "distribution": {
+    "web": "https://tempo.xcenter.it",
+    "native": "GitHub Actions artifacts",
+    "githubReleases": "pending"
+  },
+  "quality": {
+    "workflow": ".github/workflows/uads-quality.yml",
+    "performance": "config/performance-budgets.json",
+    "releaseMetadata": "config/release-metadata.json"
+  },
+  "requirements": {
+    "UADS-TEMPO-001": {
+      "applicability": "required",
+      "state": "pending",
+      "evidence": []
+    },
+    "UADS-TEMPO-002": {
+      "applicability": "required",
+      "state": "pending",
+      "evidence": []
+    },
+    "UADS-TEMPO-003": {
+      "applicability": "required",
+      "state": "pending",
+      "evidence": []
+    },
+    "UADS-TEMPO-004": {
+      "applicability": "required",
+      "state": "pending",
+      "evidence": []
+    },
+    "UADS-TEMPO-005": {
+      "applicability": "required",
+      "state": "pending",
+      "evidence": []
+    },
+    "UADS-TEMPO-006": {
+      "applicability": "required",
+      "state": "pending",
+      "evidence": []
+    },
+    "UADS-TEMPO-007": {
+      "applicability": "required",
+      "state": "pending",
+      "evidence": []
+    },
+    "UADS-TEMPO-008": {
+      "applicability": "required",
+      "state": "pending",
+      "evidence": [
+        "docs/reports/XCENTER_DEPLOYMENT.md"
+      ]
+    },
+    "UADS-TEMPO-009": {
+      "applicability": "required",
+      "state": "pending",
+      "evidence": [
+        "docs/reports/XCENTER_DEPLOYMENT.md"
+      ]
+    },
+    "UADS-TEMPO-010": {
+      "applicability": "required",
+      "state": "pending",
+      "evidence": []
+    },
+    "UADS-TEMPO-011": {
+      "applicability": "required",
+      "state": "pending",
+      "evidence": []
+    },
+    "UADS-TEMPO-012": {
+      "applicability": "conditional",
+      "state": "pending",
+      "evidence": []
+    },
+    "UADS-TEMPO-013": {
+      "applicability": "required",
+      "state": "pending",
+      "evidence": []
+    },
+    "UADS-TEMPO-014": {
+      "applicability": "conditional",
+      "state": "pending",
+      "evidence": []
+    },
+    "UADS-TEMPO-015": {
+      "applicability": "required",
+      "state": "pending",
+      "evidence": []
+    },
+    "UADS-TEMPO-016": {
+      "applicability": "required",
+      "state": "pending",
+      "evidence": []
+    },
+    "UADS-TEMPO-017": {
+      "applicability": "required",
+      "state": "pending",
+      "evidence": []
+    },
+    "UADS-TEMPO-018": {
+      "applicability": "required",
+      "state": "pending",
+      "evidence": []
+    },
+    "UADS-TEMPO-019": {
+      "applicability": "required",
+      "state": "pending",
+      "evidence": []
+    },
+    "UADS-TEMPO-020": {
+      "applicability": "required",
+      "state": "pending",
+      "evidence": []
+    },
+    "UADS-TEMPO-021": {
+      "applicability": "required",
+      "state": "pending",
+      "evidence": []
+    },
+    "UADS-TEMPO-022": {
+      "applicability": "required",
+      "state": "pending",
+      "evidence": []
+    },
+    "UADS-TEMPO-023": {
+      "applicability": "required",
+      "state": "pending",
+      "evidence": []
+    },
+    "UADS-TEMPO-024": {
+      "applicability": "required",
+      "state": "pending",
+      "evidence": [
+        "docs/reports/XCENTER_DEPLOYMENT.md"
+      ]
+    },
+    "UADS-TEMPO-025": {
+      "applicability": "conditional",
+      "state": "pending",
+      "evidence": []
+    },
+    "UADS-TEMPO-026": {
+      "applicability": "required",
+      "state": "pending",
+      "evidence": []
+    },
+    "UADS-TEMPO-027": {
+      "applicability": "required",
+      "state": "pending",
+      "evidence": []
+    },
+    "UADS-TEMPO-028": {
+      "applicability": "required",
+      "state": "pending",
+      "evidence": []
+    },
+    "UADS-TEMPO-029": {
+      "applicability": "required",
+      "state": "pending",
+      "evidence": []
+    },
+    "UADS-TEMPO-030": {
+      "applicability": "required",
+      "state": "pending",
+      "evidence": []
+    },
+    "UADS-TEMPO-031": {
+      "applicability": "required",
+      "state": "pending",
+      "evidence": []
+    },
+    "UADS-TEMPO-032": {
+      "applicability": "required",
+      "state": "pending",
+      "evidence": [
+        "docs/reports/XCENTER_DEPLOYMENT.md"
+      ]
+    },
+    "UADS-TEMPO-033": {
+      "applicability": "required",
+      "state": "pending",
+      "evidence": []
+    },
+    "UADS-TEMPO-034": {
+      "applicability": "required",
+      "state": "pending",
+      "evidence": []
+    },
+    "UADS-TEMPO-035": {
+      "applicability": "required",
+      "state": "pending",
+      "evidence": []
+    },
+    "UADS-TEMPO-036": {
+      "applicability": "required",
+      "state": "pending",
+      "evidence": [
+        "docs/reports/XCENTER_DEPLOYMENT.md"
+      ]
+    },
+    "UADS-TEMPO-037": {
+      "applicability": "required",
+      "state": "pending",
+      "evidence": []
+    },
+    "UADS-TEMPO-038": {
+      "applicability": "conditional",
+      "state": "not-applicable",
+      "evidence": [],
+      "reason": "Tempo stores user data locally; the static web deployment has no API, authentication, or sync endpoint."
+    },
+    "UADS-TEMPO-039": {
+      "applicability": "required",
+      "state": "pending",
+      "evidence": []
+    },
+    "UADS-TEMPO-040": {
+      "applicability": "conditional",
+      "state": "pending",
+      "evidence": []
+    },
+    "UADS-TEMPO-041": {
+      "applicability": "required",
+      "state": "pending",
+      "evidence": []
+    },
+    "UADS-TEMPO-042": {
+      "applicability": "required",
+      "state": "pending",
+      "evidence": []
+    },
+    "UADS-TEMPO-043": {
+      "applicability": "required",
+      "state": "pending",
+      "evidence": []
+    },
+    "UADS-TEMPO-044": {
+      "applicability": "conditional",
+      "state": "pending",
+      "evidence": []
+    },
+    "UADS-TEMPO-045": {
+      "applicability": "required",
+      "state": "pending",
+      "evidence": []
+    },
+    "UADS-TEMPO-046": {
+      "applicability": "required",
+      "state": "pending",
+      "evidence": []
+    },
+    "UADS-TEMPO-047": {
+      "applicability": "required",
+      "state": "pending",
+      "evidence": []
+    },
+    "UADS-TEMPO-048": {
+      "applicability": "required",
+      "state": "pending",
+      "evidence": []
+    },
+    "UADS-TEMPO-049": {
+      "applicability": "required",
+      "state": "pending",
+      "evidence": []
+    },
+    "UADS-TEMPO-050": {
+      "applicability": "required",
+      "state": "pending",
+      "evidence": []
+    },
+    "UADS-TEMPO-051": {
+      "applicability": "required",
+      "state": "pending",
+      "evidence": [
+        "docs/ACTIVE_TASKS.md"
+      ]
+    },
+    "UADS-TEMPO-052": {
+      "applicability": "required",
+      "state": "pending",
+      "evidence": [
+        "docs/ACTIVE_TASKS.md"
+      ]
+    }
+  },
+  "exceptions": []
+}

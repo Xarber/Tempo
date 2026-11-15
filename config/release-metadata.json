@@ -1,0 +1,16 @@
+{
+  "channels": {
+    "beta": "beta",
+    "stable": "main"
+  },
+  "integration": "testing",
+  "artifacts": [
+    "macos",
+    "ios-device-unsigned",
+    "ios-simulator",
+    "android-universal-unsigned",
+    "android-aab-unsigned"
+  ],
+  "publicationEnabled": false,
+  "webOrigin": "https://tempo.xcenter.it"
+}

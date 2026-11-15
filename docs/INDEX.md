@@ -8,3 +8,6 @@
 - [Branding](BRANDING.md), [roadmap](ROADMAP.md), [validation](reports/VALIDATION.md), [session workflow tests](reports/SESSION_WORKFLOWS_2026-11-07.md)
 - [Session workflows](features/SESSION_WORKFLOWS.md)
 - [Ideas](IDEAS.json), [Ideas contract](features/IDEAS.md)
+
+- [UADS requirements](UADS_REQUIREMENTS.md) and [active task queue](ACTIVE_TASKS.md)
+- [Testing](TESTING.md), [security](SECURITY.md), and [releases](RELEASES.md)

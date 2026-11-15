@@ -9,3 +9,7 @@ Use `swift test`, then `scripts/build-macos.sh debug`. Launch the app bundle, no
 Develop on testing or temporary branches, integrate into testing, Conventional Commits. beta/main are promotions only. Public GitHub source and X-Center web hosting are authorized. Native CI artifacts are authorized. Store publication is separate. No automatic full builds on testing. Preserve user data and unrelated changes. CI does not prove physical device behavior. Keep docs/reports and ROADMAP truthful about incomplete scope. Do not implement timers by decrementing counters. Never store credentials in client code. Do not add destructive restrictions to distraction reminders.
 
 Expo SDK 57 supports the web workspace and React Native timer. Keep first-visit landing state in web routes and the SQLite adapter in native builds. Test the production web export in a browser with `?qa=1` and report simulator, native package and physical-device evidence separately. The existing Xarber/Tempo remote is public and its historical scaffold license is retained in LICENSES. Review release and publishing authorization before exposing new work. Use X-Center for authorized hosting.
+
+Read [the UADS manifest](uads.json) and [requirements registry guide](docs/UADS_REQUIREMENTS.md) before substantial development. Run the quality checks in docs/TESTING.md and record commit-specific evidence.
+
+Read and reconcile [the persistent task queue](docs/ACTIVE_TASKS.md) at the start and end of substantive assignments. Append new requests in order and record evidence or blockers as tasks advance.

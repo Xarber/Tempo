@@ -1,0 +1,17 @@
+{
+  "web": {
+    "javascriptBytes": 2500000,
+    "fieldP75": {
+      "lcpMs": 2500,
+      "inpMs": 200,
+      "cls": 0.1
+    }
+  },
+  "native": {
+    "measurement": "Pending representative devices and a recorded baseline"
+  },
+  "coverageTargets": {
+    "changedLinesPercent": 80,
+    "changedBranchesPercent": 70
+  }
+}
